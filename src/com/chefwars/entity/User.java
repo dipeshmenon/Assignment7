@@ -10,5 +10,9 @@ public abstract class User {
         this.email = email;
     }
 
+    public User() {
+
+    }
+
     public abstract void displayRole();
 }

@@ -16,35 +16,3 @@ public class ExtraCheese extends DishDecorator {
     }
 }
 
- public class DoubleChicken extends DishDecorator {
-    public DoubleChicken(DishComponent dish) {
-        super(dish);
-    }
-
-    @Override
-    public String getDescription() {
-        return dish.getDescription() + ", Double Chicken";
-    }
-
-    @Override
-    public double getPrice() {
-        return dish.getPrice() + 2.00;
-    }
-}
-
-public class SpicySauce extends DishDecorator {
-    public SpicySauce(DishComponent dish) {
-        super(dish);
-    }
-
-    @Override
-    public String getDescription() {
-        return dish.getDescription() + ", Spicy Sauce";
-    }
-
-    @Override
-    public double getPrice() {
-        return dish.getPrice() + 0.75;
-    }
-}
-

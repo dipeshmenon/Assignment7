@@ -12,6 +12,11 @@ public class Customer extends User {
     private String name;
     private List<Order> orderHistory = new ArrayList<>();
     private Map<String, List<Integer>> ratings = new HashMap<>();
+
+    public Customer() {
+        super();
+    }
+
     @Override
     public void displayRole() {
         System.out.println("Role: Customer");

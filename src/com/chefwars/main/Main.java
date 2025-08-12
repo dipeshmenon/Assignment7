@@ -2,17 +2,19 @@ package com.chefwars.main;
 
 import com.chefwars.entity.*;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
-        SystemAdmin admin = new SystemAdmin();
+        SystemAdmin admin = new SystemAdmin("101","Dipesh","123@mail.com");
 
 
         Restaurant r1 = new Restaurant("Spice House");
         Restaurant r2 = new Restaurant("Tandoori Treats");
 
 
-        Customer c1 = new Customer("Alice");
+        Customer c1 = new Customer();
 
 
         DishComponent base1 = new BaseDish("Chicken Curry", 10.0);
@@ -36,7 +38,7 @@ public class Main {
         r1.recordRating("Paneer Tikka", 4);
 
 
-        Restaurant r3 = new Restaurant("Grill Master",);
+        Restaurant r3 = new Restaurant("Grill Master");
         DishComponent d3 = new BaseDish("Chicken Curry", 11.0);
         r3.recordRevenue(11.0, List.of(d3));
         r3.recordRating("Chicken Curry", 5);

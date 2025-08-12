@@ -10,7 +10,7 @@ public class Restaurant implements RestaurantObserver {
     private double totalRevenue = 0.0;
     private Map<String, Integer> dishOrders = new HashMap<>();
     private Map<String, List<Integer>> dishRatings = new HashMap<>();
-    public Restaurant(String name, PriceWarManager manager) {
+    public Restaurant(String name) {
         this.name = name;
         this.manager = manager;
     }
@@ -96,4 +96,4 @@ public class Restaurant implements RestaurantObserver {
         return dishRatings;
     }
 }
-}
+
