@@ -7,7 +7,7 @@ public class NoDiscount implements DiscountStrategy {
     }
 }
 
-class Flat10PercentOff implements DiscountStrategy {
+public class Flat10PercentOff implements DiscountStrategy {
     @Override
     public double applyDiscount(double total) {
         return total * 0.90;

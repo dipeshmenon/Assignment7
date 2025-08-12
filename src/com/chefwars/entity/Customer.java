@@ -1,10 +1,17 @@
 package com.chefwars.entity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Customer extends User {
     public Customer(String userId, String name, String email) {
         super(userId, name, email);
     }
-
+    private String name;
+    private List<Order> orderHistory = new ArrayList<>();
+    private Map<String, List<Integer>> ratings = new HashMap<>();
     @Override
     public void displayRole() {
         System.out.println("Role: Customer");
@@ -29,5 +36,22 @@ public class Customer extends User {
     public void viewOrderHistory() {
         System.out.println(name + " is viewing order history.");
     }
+
+    public void addOrder(Order order) {
+        orderHistory.add(order);
+    }
+
+    public void rateDish(String dishName, int stars) {
+        ratings.computeIfAbsent(dishName, k -> new ArrayList<>()).add(stars);
+    }
+
+    public List<Order> getOrderHistory() {
+        return orderHistory;
+    }
+
+    public Map<String, List<Integer>> getRatings() {
+        return ratings;
+    }
+
 }
 

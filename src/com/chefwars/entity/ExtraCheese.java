@@ -16,7 +16,7 @@ public class ExtraCheese extends DishDecorator {
     }
 }
 
- class DoubleChicken extends DishDecorator {
+ public class DoubleChicken extends DishDecorator {
     public DoubleChicken(DishComponent dish) {
         super(dish);
     }
@@ -32,7 +32,7 @@ public class ExtraCheese extends DishDecorator {
     }
 }
 
-class SpicySauce extends DishDecorator {
+public class SpicySauce extends DishDecorator {
     public SpicySauce(DishComponent dish) {
         super(dish);
     }

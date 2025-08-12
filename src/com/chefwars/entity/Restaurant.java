@@ -7,14 +7,14 @@ public class Restaurant implements RestaurantObserver {
     private Map<String, Dish> menu = new HashMap<>();
     private PriceWarManager manager;
 
+    private double totalRevenue = 0.0;
+    private Map<String, Integer> dishOrders = new HashMap<>();
+    private Map<String, List<Integer>> dishRatings = new HashMap<>();
     public Restaurant(String name, PriceWarManager manager) {
         this.name = name;
         this.manager = manager;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public void addDish(String name, double price) {
         menu.put(name, new Dish(name, price));
@@ -62,4 +62,38 @@ public class Restaurant implements RestaurantObserver {
             System.out.println("- " + dish.getName() + ": $" + String.format("%.2f", dish.getPrice()));
         }
     }
+    public void recordRevenue(double amount, List<DishComponent> orderedDishes) {
+        totalRevenue += amount;
+        for (DishComponent dish : orderedDishes) {
+            String name = dish.getDescription().split(",")[0].trim(); // base name
+            dishOrders.put(name, dishOrders.getOrDefault(name, 0) + 1);
+        }
+    }
+
+    public void recordRating(String dishName, int stars) {
+        dishRatings.computeIfAbsent(dishName, k -> new ArrayList<>()).add(stars);
+    }
+
+    public double getTotalRevenue() {
+        return totalRevenue;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<String, Integer> getDishOrders() {
+        return dishOrders;
+    }
+
+    public double getAverageRating(String dishName) {
+        List<Integer> ratings = dishRatings.get(dishName);
+        if (ratings == null || ratings.isEmpty()) return 0;
+        return ratings.stream().mapToInt(i -> i).average().orElse(0);
+    }
+
+    public Map<String, List<Integer>> getAllRatings() {
+        return dishRatings;
+    }
+}
 }
